@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: {
+      components: {
         default: HelloWorld,
         Footer: Footer,
         Toolbar: Toolbar

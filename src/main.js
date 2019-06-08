@@ -9,7 +9,15 @@ import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import '@fortawesome/fontawesome-free/css/all.css'
 Vue.config.productionTip = false
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#4bc0c5', /* Main Primary color */
+    secondary: '#A9EBEF',
+    thirdary: '#73D6DB',
+    forth: '#2CA8AD',
+    fiveth: '#0D9298'
+  }
+})
 
 /* eslint-disable no-new */
 /* eslint-disable */

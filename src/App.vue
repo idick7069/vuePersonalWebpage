@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <router-view name="Toolbar"></router-view>
     <div>
       <router-view></router-view>
       <router-view name="Footer"></router-view>
-      <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  /* eslint-disable */
+  //忽略所有提示
   name: 'App'
 }
 </script>
@@ -22,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
