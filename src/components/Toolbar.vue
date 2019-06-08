@@ -14,13 +14,14 @@
       </v-btn>
       <v-spacer></v-spacer>
      <v-btn
-            v-for="icon in icons"
-            :key="icon"
+            v-for="link in links"
+            :key="link.id"
             class="mx-3"
             dark
             icon
+            v-bind:href="link.linkUrl"
           >
-            <v-icon size="24px">{{ icon }}</v-icon>
+            <v-icon size="24px">{{link.linkIcon}}</v-icon>
           </v-btn>
     </v-toolbar>
 </div>
@@ -39,14 +40,32 @@ export default {
       '專業技能',
       '相關作品'
     ],
-    icons: [
-      'fas fa-clock',
-      'fab fa-github',
-      'fab fa-facebook',
-      'fab fa-linkedin',
-      'fab fa-instagram'
+    links:[{
+          linkid:1,
+          linkIcon: 'fas fa-clock',
+          linkUrl:'https://wakatime.com/@FrankWu',
+        },{
+          linkid:2,
+          linkIcon: 'fab fa-github',
+          linkUrl:'https://github.com/idick7069',
+        },{
+          linkid:3,
+          linkIcon: 'fab fa-facebook',
+          linkUrl:'https://www.facebook.com/profile.php?id=100000328050353',
+        },{
+          linkid:4,
+          linkIcon: 'fab fa-linkedin',
+          linkUrl:'#',
+        },{
+          linkid:5,
+          linkIcon: 'fab fa-instagram',
+          linkUrl:'#',
+        }
     ]
-  })
+  }),
+  methods:{
+
+  }
 }
 </script>
 <style>

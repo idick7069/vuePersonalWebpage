@@ -5,7 +5,7 @@
     <h1>{{ 123 }}</h1>
       <v-container grid-list-md text-xs-center fluid>
       <v-layout row wrap>
-          <v-flex d-flex xs12 sm6 md6>
+          <v-flex d-flex xs12 sm6 md3>
           <v-layout row wrap>
             <v-flex d-flex  md12>
               <v-card color="indigo" dark>
@@ -13,6 +13,7 @@
                    <v-avatar color="#0D9298" size="50px">
                       <span class="white--text headline">123</span>
                   </v-avatar>
+                  <H1>Android Development</H1>
                  </v-container>
               </v-card>
             </v-flex>
@@ -23,7 +24,7 @@
             </v-flex>
           </v-layout>
         </v-flex>
-         <v-flex d-flex xs12 sm6 md6>
+         <v-flex d-flex xs12 sm6 md9>
           <v-layout row wrap>
             <v-flex d-flex md12>
               <v-card color="indigo" dark>
