@@ -1,6 +1,6 @@
 <template>
   <div id="toolbar">
-    <v-toolbar dark color="#4bc0c5">
+    <v-toolbar dark color="#4bc0c5" scroll-off-screen scroll-target="#hello">
       <v-btn icon>
         <v-avatar color="#0D9298" size="32px">
           <span class="white--text headline">{{logo}}</span>
@@ -9,6 +9,8 @@
       <v-btn v-for="part in parts"
              :key="part"
              flat
+             class="mx-1 "
+             style="font-size: 15px;"
              >
              {{part}}
       </v-btn>
@@ -16,7 +18,7 @@
      <v-btn
             v-for="link in links"
             :key="link.id"
-            class="mx-3"
+            class="mx-3 hidden-sm-and-down"
             dark
             icon
             v-bind:href="link.linkUrl"
@@ -68,8 +70,8 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 #toolbar{
-  font-family:'Microsoft JhengHei'
+  font-family:'Microsoft JhengHei';
 }
 </style>

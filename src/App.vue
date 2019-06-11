@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app"   class="hide-overflow"
+      style="position: relative;">
     <router-view name="Toolbar"></router-view>
     <div>
       <router-view></router-view>
@@ -16,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

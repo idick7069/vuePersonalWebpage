@@ -1,12 +1,10 @@
 <template>
-  <div class="hello">
-    <div>
-    </div>
-    <v-container grid-list-md text-xs-center fluid>
+  <div id="hello" class="scroll-y" style="max-height: 600px;">
+    <v-container grid-list-md style="height: 1000px;">
       <v-layout row wrap>
         <v-flex d-flex xs12 sm6 md3>
-          <v-layout row wrap align-center="">
-            <v-flex d-flex md12 id="hello">
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12>
               <v-card>
                 <v-container>
                   <v-avatar size="200px" color="green">
@@ -15,37 +13,62 @@
                       alt="headshot">
                   </v-avatar>
                   <H1>吳承剛</H1>
-                  <H2>Android Development</H2>
+                  <H2>Android App Development</H2>
                 </v-container>
               </v-card>
             </v-flex>
           </v-layout>
         </v-flex>
         <v-flex d-flex xs12 sm6 md9>
-          <v-layout row wrap>
-            <v-flex d-flex md12>
-              <v-card>
-                <v-timeline align-center dense>
-                  <v-timeline-item v-for="(year, i) in years" :key="i" :color="year.color" small>
-                    <v-layout row wrap align-center="">
-                    <v-flex d-flex xs12 sm6 md4>
+          <v-layout row wrap align-content-center>
+            <v-flex d-flex xs12 sm6 md8>
+              <v-card max-width="1000px">
+                <v-container fluid grid-list-lg>
+                <v-timeline align-top dense>
+                  <v-timeline-item v-for="(year, i) in years" :key="i" :color="year.color" small left>
+                    <v-layout row>
+                    <v-flex  xs12 sm6 md3>
                       <template>
-                        <span :class="`headline font-weight-bold ${year.color}--text`" v-text="year.year"></span>
+                        <span wrap class="text-md-left" :class="`headline font-weight-bold ${year.color}--text`" v-text="year.year"></span>
                       </template>
                     </v-flex>
-                    <v-flex d-flex xs12 sm6 md8>
-                      <div class="py-3">
-                      <h2 :class="`headline font-weight-light mb-3 ${year.color}--text`">Lorem ipsum</h2>
-                      <div>
-                        Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed
-                        euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando
-                        voluptatibus, vix an salutandi sententiae.
-                      </div>
-                    </div>
+                    <v-flex xs12 sm6 md9>
+                      <v-container>
+                          <h5  class="text-md-left" :class="`headline font-weight-light mb-3 ${year.color}--text`">{{year.school}}</h5>
+                          <div class="text-md-left">
+                            {{year.department}}
+                          </div>
+                      </v-container>
                     </v-flex>
+                    <v-spacer />
                     </v-layout>
                   </v-timeline-item>
                 </v-timeline>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+      <v-layout row wrap>
+        <v-flex d-flex xs12 sm6 md3>
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12>
+              <v-card>
+               <v-card-title>
+                <img src="@/assets/pacman.png"/>
+                <H1 class="title bold">語言能力</H1>
+                 </v-card-title>
+                 <v-card-text>123</v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex d-flex xs12 sm6 md9>
+          <v-layout row wrap align-content-center>
+            <v-flex d-flex xs12 sm6 md8 fill-height>
+              <v-card>
+                <img src="@/assets/pacman.png"/>
               </v-card>
             </v-flex>
           </v-layout>
@@ -115,11 +138,9 @@ export default {
   a {
     color: #42b983;
   }
-
-  #hello {
-    margin: 30px;
+  #hello{
+    /* margin: 10%; */
   }
-
   H1 {
     font-size: 30px;
     font-weight: bold;
@@ -130,6 +151,7 @@ export default {
   H2 {
     font-size: 16px;
     margin: 15px 10px;
+     font-family: 'Microsoft JhengHei';
   }
 
   img {
