@@ -27,7 +27,7 @@
                 <v-timeline align-top dense>
                   <v-timeline-item v-for="(year, i) in years" :key="i" :color="year.color" small left>
                     <v-layout row>
-                    <v-flex  xs12 sm6 md3>
+                    <v-flex xs12 sm6 md3>
                       <template>
                         <span wrap class="text-md-left" :class="`headline font-weight-bold ${year.color}--text`" v-text="year.year"></span>
                       </template>
@@ -55,11 +55,31 @@
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
               <v-card>
-               <v-card-title>
+               <v-card-title class="bord12">
                 <img src="@/assets/pacman.png"/>
-                <H1 class="title bold">語言能力</H1>
+                <span class="titleText bold">語言能力</span>
                  </v-card-title>
-                 <v-card-text>123</v-card-text>
+                 <v-divider
+                  class="mx-3"
+                 ></v-divider>
+                 <div  class="leftText">
+                  <v-layout>
+                  <v-flex md6>
+                    <v-card-text>TOEIC</v-card-text>
+                  </v-flex>
+                  <v-flex md6>
+                    <v-card-text>590</v-card-text>
+                  </v-flex>
+                 </v-layout>
+                 <v-layout>
+                  <v-flex md6>
+                    <v-card-text>JLPT</v-card-text>
+                  </v-flex>
+                  <v-flex md6>
+                    <v-card-text>N4</v-card-text>
+                  </v-flex>
+                 </v-layout>
+                 </div>
               </v-card>
             </v-flex>
           </v-layout>
@@ -157,5 +177,16 @@ export default {
   img {
     padding: 1px;
   }
+  .titleText{
+     font-size: 25px;
+    font-weight: bold;
+    font-family: 'Microsoft JhengHei';
+    font: black;
+    margin-left: 10px;
+  }
+  .leftText{
+    text-align: left;
+  }
+
 
 </style>

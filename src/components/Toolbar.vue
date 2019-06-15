@@ -6,6 +6,11 @@
           <span class="white--text headline">{{logo}}</span>
         </v-avatar>
       </v-btn>
+      <v-divider
+        class="mx-3"
+        inset
+        vertical
+      ></v-divider>
       <v-btn v-for="part in parts"
              :key="part"
              flat
