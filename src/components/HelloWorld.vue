@@ -1,7 +1,7 @@
 <template>
-  <div id="hello" class="scroll-y" style="max-height: 600px;">
-    <v-container grid-list-md style="height: 1000px;">
-      <v-layout row wrap>
+  <div id="main" class="scroll-y" style="max-height: 600px;">
+    <v-container id="hello" grid-list-md style="height: 1000px;" align-center>
+      <v-layout row wrap style="height: 500px;">
         <v-flex d-flex xs12 sm6 md3>
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
@@ -19,22 +19,22 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex d-flex xs12 sm6 md9>
-          <v-layout row wrap align-content-center>
-            <v-flex d-flex xs12 sm6 md8>
-              <v-card max-width="1000px">
-                <v-container fluid grid-list-lg>
+        <v-flex d-flex xs12 sm6 md9 hidden-md-and-up>
+          <v-layout row wrap>
+            <v-flex d-flex xs12 sm6 md12 wrap>
+              <v-card color="gray">
+                <v-container fluid grid-list-md>
                 <v-timeline align-top dense>
                   <v-timeline-item v-for="(year, i) in years" :key="i" :color="year.color" small left>
-                    <v-layout row>
-                    <v-flex xs12 sm6 md3>
+                    <v-layout row >
+                    <v-flex d-flex xs12 sm6 md4>
                       <template>
                         <span wrap class="text-md-left" :class="`headline font-weight-bold ${year.color}--text`" v-text="year.year"></span>
                       </template>
                     </v-flex>
-                    <v-flex xs12 sm6 md9>
+                    <v-flex d-flex xs12 sm6 md8>
                       <v-container>
-                          <h5  class="text-md-left" :class="`headline font-weight-light mb-3 ${year.color}--text`">{{year.school}}</h5>
+                          <h5 class="text-md-left" :class="`headline font-weight-light mb-3 ${year.color}--text`">{{year.school}}</h5>
                           <div class="text-md-left">
                             {{year.department}}
                           </div>
@@ -51,9 +51,9 @@
         </v-flex>
       </v-layout>
       <v-layout row wrap>
-        <v-flex d-flex xs12 sm6 md3>
+        <v-flex d-flex xs12 sm4 md4>
           <v-layout row wrap align-center>
-            <v-flex d-flex md12>
+            <v-flex d-flex md12 >
               <v-card>
                <v-card-title class="bord12">
                 <img src="@/assets/pacman.png"/>
@@ -62,33 +62,105 @@
                  <v-divider
                   class="mx-3"
                  ></v-divider>
-                 <div  class="leftText">
-                  <v-layout>
-                  <v-flex md6>
-                    <v-card-text>TOEIC</v-card-text>
-                  </v-flex>
-                  <v-flex md6>
-                    <v-card-text>590</v-card-text>
-                  </v-flex>
-                 </v-layout>
-                 <v-layout>
-                  <v-flex md6>
-                    <v-card-text>JLPT</v-card-text>
-                  </v-flex>
-                  <v-flex md6>
-                    <v-card-text>N4</v-card-text>
-                  </v-flex>
-                 </v-layout>
+                 <div class="leftText">
+                   <v-layout row
+                    v-for="language in languages"
+                    :key="language.certificate">
+                    <v-flex md4>
+                      <v-list>
+                        <v-list-tile-content>
+                          <v-list-tile-title>{{language.certificate}}</v-list-tile-title>
+                        </v-list-tile-content>
+                      </v-list>
+                    </v-flex>
+                    <v-flex md8>
+                      <v-list>
+                        <v-list-tile-content>
+                          <v-list-tile-title>{{language.score}}</v-list-tile-title>
+                        </v-list-tile-content>
+                      </v-list>
+                    </v-flex>
+                   </v-layout>
                  </div>
               </v-card>
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex d-flex xs12 sm6 md9>
-          <v-layout row wrap align-content-center>
-            <v-flex d-flex xs12 sm6 md8 fill-height>
+       <v-flex d-flex xs12 sm4 md4>
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12 >
               <v-card>
+               <v-card-title class="bord12">
                 <img src="@/assets/pacman.png"/>
+                <span class="titleText bold">使用工具</span>
+                 </v-card-title>
+                 <v-divider
+                  class="mx-3"
+                 ></v-divider>
+                 <div class="leftText">
+                   <v-layout row
+                    v-for="tool in tools"
+                    :key="tool.name">
+                    <v-flex md12>
+                      <v-list>
+                        <v-list-tile-content>
+                          <v-list-tile-title>{{tool.name}}</v-list-tile-title>
+                        </v-list-tile-content>
+                      </v-list>
+                    </v-flex>
+                   </v-layout>
+                 </div>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex d-flex xs12 sm4 md4>
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12 >
+              <v-card flat>
+               <v-card-title class="bord12">
+                <img src="@/assets/pacman.png"/>
+                <span class="titleText bold animated fadeInLeft delay-1s">使用框架</span>
+                 </v-card-title>
+                 <v-divider
+                  class="mx-3"
+                 ></v-divider>
+                 <div class="leftText">
+                   <v-layout row
+                    v-for="framework in frameworks"
+                    :key="framework.name">
+                    <v-flex md12>
+                      <v-list>
+                        <v-list-tile-content>
+                          <v-list-tile-title>{{framework.name}}</v-list-tile-title>
+                        </v-list-tile-content>
+                      </v-list>
+                    </v-flex>
+                   </v-layout>
+                 </div>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex d-flex xs12 sm12 md12>
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12 >
+              <v-card flat>
+               <v-card-title class="bord12">
+                <img src="@/assets/pacman.png"/>
+                <span class="titleText bold animated fadeInLeft delay-1s">程式能力</span>
+                 </v-card-title>
+                 <v-divider
+                  class="mx-3"
+                 ></v-divider>
+                 <div class="leftText">
+                   <v-layout row
+                    v-for="framework in frameworks"
+                    :key="framework.name">
+                    <v-flex md12>
+                    </v-flex>
+                   </v-layout>
+                 </div>
               </v-card>
             </v-flex>
           </v-layout>
@@ -112,19 +184,51 @@ export default {
         color: 'cyan',
         year: '2017-2019',
         school:'國立雲林科技大學',
-        department:'資訊管理所'
+        department:'資訊管理所 碩士'
       },
       {
         color: 'green',
         year: '2015-2017',
         school:'國立雲林科技大學',
-        department:'資訊管理系'
+        department:'資訊管理系 學士'
       },
       {
         color: 'pink',
         year: '2010-2015',
         school:'國立台中科技大學',
-        department:'銀行保險科'
+        department:'銀行保險科 副學士'
+      }
+    ],
+    languages:[
+      {
+        certificate: 'TOEIC',
+        score: '590' 
+      },
+      {
+        certificate: 'JLPT',
+        score: 'N4' 
+      }
+    ],
+    tools:[
+      {
+        name:'Vitural Studio Code'
+      },
+      {
+        name:'Android Studio'
+      },
+      {
+        name:'Xcode'
+      },
+      {
+        name:'SPSS'
+      }
+    ],
+    frameworks:[
+      {
+        name:'Laravel'
+      },
+      {
+        name:'Vue.js'
       }
     ]
     }
@@ -159,7 +263,7 @@ export default {
     color: #42b983;
   }
   #hello{
-    /* margin: 10%; */
+    /* margin:0px 200px; */
   }
   H1 {
     font-size: 30px;
@@ -171,7 +275,7 @@ export default {
   H2 {
     font-size: 16px;
     margin: 15px 10px;
-     font-family: 'Microsoft JhengHei';
+    font-family: 'Microsoft JhengHei';
   }
 
   img {
@@ -186,7 +290,16 @@ export default {
   }
   .leftText{
     text-align: left;
+    margin-left: 20px;
   }
+  *{
+    font-family: 'Microsoft JhengHei';
+  }
+  .animateTest {
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
 
 
 </style>
