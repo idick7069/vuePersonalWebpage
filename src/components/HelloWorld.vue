@@ -132,6 +132,7 @@
             </v-flex>
           </v-layout>
         </v-flex>
+        <!-- 程式能力開始 -->
         <v-flex d-flex xs12 sm12 md12>
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
@@ -142,19 +143,78 @@
                 </v-card-title>
                 <v-divider class="mx-3"></v-divider>
                 <div>
-                  <v-layout row wrap>
+                  <v-layout row wrap style="padding:10px 0px">
                     <v-flex v-for="program in programs" :key="program.name" xs3>
-                      <v-card>
+                      <v-card >
                         <v-card-text class="px-0">{{program.name}}</v-card-text>
-                        <svg width="177" height="40">
-                        <!-- <rect  rx="2" ry="2" x="2" y="2" fill="none" stroke="#333" stroke-width="3" width="117" height="10"/>
-                        <rect id="programSVG" rx="2" ry="2" x="2" y="2" fill="none" stroke="#0D9298" stroke-width="2" width="117" height="10"/> -->
-                        <!-- <circle id="backdrop" r="90" cy="120" cx="120" stroke-width="3" stroke="#333" fill="none"/>
-                        <circle id="progress" r="90" cy="120" cx="120" stroke-width="4" stroke="#0D9298" fill="none"/> -->
-                        </svg>
+                          <span class="abilityText">  {{ program.value }}%</span>
+                        <div>
+                        <v-progress-linear
+                          height="20"
+                          :value="program.value"
+                          color="teal"
+                        >
+                        </v-progress-linear>
+                        </div>
                       </v-card>
                     </v-flex>
                   </v-layout>
+                </div>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <!-- 程式能力結束 -->
+        <v-flex d-flex xs12 sm12 md12>
+          <v-layout row wrap align-center>
+            <v-flex d-flex md12>
+              <v-card flat>
+                <v-card-title class="bord12">
+                  <img src="@/assets/pacman.png" />
+                  <span class="titleText bold animated fadeInLeft delay-1s">專案參與</span>
+                </v-card-title>
+                <v-divider class="mx-3"></v-divider>
+                <div>
+                  <v-container >
+                  <v-layout row wrap style="padding:10px 0px">
+                    <v-flex v-for="project in projects" :key="project.id" xs4>
+                      <v-card
+                        class="mx-auto"
+                        color="#4bc0c5"
+                        dark
+                        max-width="400"
+                      >
+                        <v-card-title class="justify-center">
+                            <span class="title font-weight-light">{{project.name}}</span>
+                        </v-card-title>
+                        <v-divider class="mx-3"></v-divider>
+                        <v-card-text class="headline font-weight-bold">
+                            <v-img
+                              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                              height="200px"
+                            >
+                            </v-img>
+                        </v-card-text>
+                           <div>
+                            <v-layout row wrap v-for="( projectTitle, index) in projectTitles" :key="index">
+                              <v-flex md4>
+                                <v-card dark color="#4bc0c5" flat>
+                                  <v-card-text style="text-align: left;">{{projectTitle}}</v-card-text>
+                                </v-card>
+                              </v-flex>
+                              <v-flex md8>
+                                <v-card dark color="#4bc0c5 " flat>
+                                  <v-card-text style="text-align: left;" v-if="index===0">{{project.title}}</v-card-text>
+                                  <v-card-text style="text-align: left;" v-if="index===1">{{project.content}}</v-card-text>
+                                  <v-card-text style="text-align: left;" v-if="index===2">{{project.period}}</v-card-text>
+                                </v-card>
+                              </v-flex>
+                            </v-layout>
+                          </div>
+                      </v-card>
+                    </v-flex>
+                  </v-layout>
+                  </v-container>
                 </div>
               </v-card>
             </v-flex>
@@ -222,21 +282,88 @@ export default {
             name: 'Vue.js'
           }
         ],
-        programs: [{
+        programs: [
+          {
+            name: 'Android',
+            score: 80,
+            value:0,
+            interval:{}
+          },
+          {
             name: 'Java',
-            score: 80
+            score: 80,
+            value:0,
+            interval:{}
           },
           {
             name: 'PHP',
-            score: 50
+            score: 50,
+            value:0,
+            interval:{}
           },
           {
             name: 'Python',
-            score: 40
+            score: 40,
+            value:0,
+            interval:{}
           },
           {
             name: 'JavaScript',
-            score: 30
+            score: 30,
+            value:0,
+            interval:{}
+          }
+        ],
+        projectTitles:[
+          '專案名稱',
+          '負責內容',
+          '專案期間'
+        ]
+        ,
+        projects: [{
+            id:0,
+            name: '聯華電子股份有限公司',
+            title:'進料檢驗系統',
+            content: '前後端開發、需求產出',
+            period:'2019/07',
+            detail:'詳細為機密事項',
+            tech:'Android、Java'
+          },
+          {
+            id:1,
+            name: '九彥科技股份有限公司',
+            title:'iOS飛霸鴿隻管理系統',
+            content: '專案管理、需求產出',
+            period:'2018/12',
+            detail:'管理四人團隊，以使用者需求調查、時程管理、人員編排以及協調設計師與工程師為主。\n其專案內容為以Xcode工具並以Swift編寫iOS應用程式，大部分為管理團隊，並進行部分程式Debug及前端介面修改',
+            tech:'Xcode、Swift3'
+          },
+          {
+            id:2,
+            name: '九彥科技股份有限公司',
+            title:'Android飛霸鴿隻管理系統',
+            content: '專案管理、前後端開發',
+            period:'2019/01',
+            detail:'以Android  Studio工具並Java編寫Android應用程式\n其包含MySQL及SQLite資料庫連結、PHP及Laravel網頁後台管理、Apache架設虛擬伺服器、使用者測試、使用者需求調查、系統維護\n並有GooglePlay上架經驗',
+            tech:'Android、Java'
+          },
+           {
+            id:3,
+            name: '九彥科技股份有限公司',
+            title:'飛霸鴿隻管理後台',
+            content: '前後端開發、伺服器架設',
+            period:'2018/01',
+            detail:'以PHP的Laravel 框架開發後台，並以Bootstrap的AdminLte模板進行後台的前端設計。其伺服器架設於Windows server2012上以Apache及MySQL運行',
+            tech:'PHP、Laravel、MySQL'
+          },
+          {
+            id:4,
+            name: 'SideProject',
+            title:'中華徵信社5000大企業資料庫爬蟲工具',
+            content: '軟體開發',
+            period:'2019/03',
+            detail:'以中華徵信社台灣5000大企業資料庫爬蟲工具\n使用 selenium 套件 前置需安裝webdriver\n並以中科大圖書系統為入口 需有中科大在校帳號密碼才可使用',
+            tech:'Python'
           }
         ]
       }
@@ -246,9 +373,21 @@ export default {
         const active = parseInt(this.active)
         this.active = (active < 2 ? active + 1 : 0)
       }
+    },
+    beforeDestroy () {
+   
+    },
+    mounted () {
+      this.programs.forEach(function(el) {
+        el.interval = setInterval(() => {
+        if (el.value === el.score-1) {
+          clearInterval(el.interval);
+        }
+        el.value ++
+      }, 100)
+      });
     }
   }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -279,14 +418,12 @@ export default {
   H1 {
     font-size: 30px;
     font-weight: bold;
-    font-family: 'Microsoft JhengHei';
     margin: 10px 10px;
   }
 
   H2 {
     font-size: 16px;
     margin: 15px 10px;
-    font-family: 'Microsoft JhengHei';
   }
 
   img {
@@ -296,14 +433,21 @@ export default {
   .titleText {
     font-size: 25px;
     font-weight: bold;
-    font-family: 'Microsoft JhengHei';
     font: black;
     margin-left: 10px;
+  }
+  .abilityText{
+    font-size: 40px;
+    font-weight: bold;
+    font: black;
   }
 
   .leftText {
     text-align: left;
     margin-left: 20px;
+  }
+  .alignText{
+    text-align: center;
   }
 
   * {
@@ -325,7 +469,7 @@ export default {
 }
   
 
-  @keyframes myAnimation
+@keyframes myAnimation
 {
      /* 0%{ fill: #4BC0C8;}
     20%{ fill-opacity: #C779D0;}
