@@ -1,6 +1,6 @@
 <template>
   <div id="toolbar">
-    <v-toolbar dark color="#4bc0c5" scroll-off-screen scroll-target="#hello">
+    <v-toolbar dark color="#4bc0c5" >
       <v-btn icon>
         <v-avatar color="#0D9298" size="32px">
           <span class="white--text headline">{{logo}}</span>
@@ -16,8 +16,11 @@
              flat
              class="mx-1 "
              style="font-size: 15px;"
+             v-on:click="actionDecrease"
              >
              {{part}}
+             {{count}}
+             {{position}}
       </v-btn>
       <v-spacer></v-spacer>
      <v-btn
@@ -35,6 +38,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'toolbar',
   /* eslint-disable */
@@ -62,16 +66,27 @@ export default {
         },{
           linkid:4,
           linkIcon: 'fab fa-linkedin',
-          linkUrl:'#',
-        },{
-          linkid:5,
-          linkIcon: 'fab fa-instagram',
-          linkUrl:'#',
+          linkUrl:'https://www.linkedin.com/in/%E6%89%BF%E5%89%9B-%E5%90%B3-b1426117b/',
         }
     ]
   }),
   methods:{
-
+   jumpAnchor: function(){
+     console.log('跳轉錨點');
+    scrollTo(0,500);
+   },
+   ...mapActions([
+      'actionIncrease',
+      'actionDecrease',
+      'actionAnchor'
+    ])
+  },
+  computed:{
+    ...mapGetters({
+      // getCount return value 將會存在別名為 count 的 data 上
+      count: 'getCount',
+      position: 'getPosition'
+    })
   }
 }
 </script>

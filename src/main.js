@@ -4,9 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import VueAnalytics from 'vue-analytics'
+import Vuex from 'vuex'
+import store from './store'
 // index.js or main.js
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import '@fortawesome/fontawesome-free/css/all.css'
+
 Vue.config.productionTip = false
 
 Vue.use(Vuetify, {
@@ -18,6 +22,10 @@ Vue.use(Vuetify, {
     fiveth: '#0D9298'
   }
 })
+Vue.use(VueAnalytics, {
+  id: 'UA-143781799-1'
+})
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 /* eslint-disable */
@@ -26,5 +34,6 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
-  iconfont: 'fa' // 'md' || 'mdi' || 'fa' || 'fa4'
+  iconfont: 'fa', // 'md' || 'mdi' || 'fa' || 'fa4'
+  store //Vuex
 })
