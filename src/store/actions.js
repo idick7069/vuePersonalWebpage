@@ -13,5 +13,5 @@ export const actionDecrease = ({ commit }) => {
 
 export const actionAnchor = ({ commit }, anchor) => {
   console.log('actionAnchor')
-  commit(types.ANCHOR, [anchor, 1, 2])
+  commit(types.ANCHOR, anchor)
 }

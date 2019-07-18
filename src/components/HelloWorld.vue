@@ -2,9 +2,9 @@
   <div id="main" >
     <v-container id="hello" grid-list-md  align-center>
       <v-layout row wrap >
-        <v-flex d-flex xs12 sm12 md3>
+        <v-flex d-flex xs12 sm12 md3 class="titleFlex">
           <v-layout row wrap align-center>
-            <v-flex d-flex md12>
+            <v-flex d-flex md12 >
               <v-card flat>
                 <v-container>
                   <v-avatar size="200px" color="green">
@@ -20,7 +20,7 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex d-flex xs12 sm6 md9 hidden-md-and-up>
+        <v-flex d-flex xs12 sm6 md9 hidden-md-and-up class="titleFlex">
           <v-layout row wrap>
             <v-flex d-flex xs12 sm12 md12 wrap>
               <v-card color="gray" flat>
@@ -54,7 +54,7 @@
         </v-flex>
       </v-layout>
       <v-layout row wrap>
-        <v-flex d-flex xs12 sm4 md4>
+        <v-flex d-flex xs12 sm4 md4 class="titleFlex">
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
               <v-card flat>
@@ -109,13 +109,13 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex d-flex xs12 sm4 md4>
+        <v-flex d-flex xs12 sm4 md4 class="titleFlex">
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
               <v-card flat>
                 <v-card-title class="bord12">
                   <img src="@/assets/pacman.png" />
-                  <span class="titleText bold animated fadeInLeft delay-2s">使用框架{{position}}</span>
+                  <span class="titleText bold animated fadeInLeft delay-2s">使用框架</span>
                 </v-card-title>
                 <v-divider class="mx-3"></v-divider>
                 <div class="leftText">
@@ -134,7 +134,7 @@
           </v-layout>
         </v-flex>
         <!-- 程式能力開始 -->
-        <v-flex d-flex xs12 sm12 md12>
+        <v-flex d-flex xs12 sm12 md12 >
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
               <v-card flat>
@@ -166,7 +166,7 @@
           </v-layout>
         </v-flex>
         <!-- 程式能力結束 -->
-        <v-flex d-flex xs12 sm12 md12 id="testProject">
+        <v-flex d-flex xs12 sm12 md12 class="titleFlex">
           <v-layout row wrap align-center>
             <v-flex d-flex md12>
               <v-card flat>
@@ -396,8 +396,18 @@ export default {
         position: 'getPosition',
       }),
       setAnchor: function(){
+        var objArray = document.getElementsByClassName('titleFlex');
         var obj = document.getElementById('testProject');
-        var oPos = obj.offsetTop;
+        // var oPos = obj.offsetTop;
+        var oPos=[];
+        console.log(obj);
+        for(var i=0;i<objArray.length;i++){
+          console.log('錨點位置?'+i,objArray[i]);
+          oPos.push(objArray[i].offsetTop) 
+          
+        }
+
+        
         this.$store.dispatch('actionAnchor',oPos)
         console.log('錨點位置',oPos);
       }

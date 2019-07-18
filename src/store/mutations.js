@@ -3,7 +3,7 @@ import * as types from './mutations_type.js'
 // state
 export const state = {
   count: 0,
-  position: [1, 2, 3]
+  position: 0
 }
 
 // mutations

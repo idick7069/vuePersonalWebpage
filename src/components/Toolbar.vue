@@ -11,16 +11,14 @@
         inset
         vertical
       ></v-divider>
-      <v-btn v-for="part in parts"
-             :key="part"
+      <v-btn v-for="(part, index) in parts"
+             :key="index"
              flat
-             class="mx-1 "
+             class="mx-1"
              style="font-size: 15px;"
-             v-on:click="actionDecrease"
+             @click="jumpAnchor(index)"
              >
              {{part}}
-             {{count}}
-             {{position}}
       </v-btn>
       <v-spacer></v-spacer>
      <v-btn
@@ -48,7 +46,8 @@ export default {
     parts:[
       '關於',
       '學經歷',
-      '專業技能',
+      '相關技能',
+      '程式能力',
       '相關作品'
     ],
     links:[{
@@ -71,9 +70,9 @@ export default {
     ]
   }),
   methods:{
-   jumpAnchor: function(){
-     console.log('跳轉錨點');
-    scrollTo(0,500);
+   jumpAnchor: function(el){
+     console.log('轉至'+this.parts[el]+':'+this.position[el]);
+    scrollTo(0,this.position[el]);
    },
    ...mapActions([
       'actionIncrease',
